@@ -1,7 +1,6 @@
 {
   "compatibleVersion": 3,
   "bundleVersion": 1,
-  "appcast": "https://raw.githubusercontent.com/zehfernandes/sketch-pochette/master/.appcast.xml",
   "icon": "icon.png",
   "commands": [
     {
@@ -17,5 +16,11 @@
   "menu": {
     "title": "Pochette",
     "items": ["sketchpochette-identifier"]
-  }
+  },
+  "version": "0.4.0",
+  "description": "A Sketch plugin that lets you carry your most used properties close to your mouse.",
+  "homepage": "https://github.com/zehfernandes/sketch-pochette",
+  "appcast": "https://raw.githubusercontent.com/zehfernandes/sketch-pochette/master/.appcast.xml",
+  "author": "Zeh Fernandes",
+  "authorEmail": "ozehfernandes@gmail.com"
 }
