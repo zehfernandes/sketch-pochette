@@ -11,15 +11,9 @@ Every time you want to edit your elements precisely, you need to travel with you
 Bonus point bumbags are cool again.
 
 ## Install
-<a href="http://bit.ly/SketchRunnerWebsite">
-  <img height="40" width="160" src="http://bit.ly/RunnerBadgeBlue">
-</a>
 
-<a href="https://sketchpacks.com/zehfernandes/sketch-pochette/install">
-  <img width="160" height="41" src="http://sketchpacks-com.s3.amazonaws.com/assets/badges/sketchpacks-badge-install.png" >
-</a>
     
-1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/archive/master.zip)**.
+1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/releases/download/v0.4.0/sketchpochette.sketchplugin.zip)**.
 2. Double click on `sketchpochette.sketchplugin` to install. 
 
 ## Usage
