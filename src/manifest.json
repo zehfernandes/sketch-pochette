@@ -1,6 +1,7 @@
 {
   "compatibleVersion": 3,
   "bundleVersion": 1,
+  "appcast": "https://raw.githubusercontent.com/zehfernandes/sketch-pochette/master/.appcast.xml",
   "commands": [
     {
       "name": "Open pochette",

@@ -1,21 +1,21 @@
+<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/title.png" width="100%">
+
 # sketch-pochette
 
 A Sketch plugin that lets you carry your most used properties close to your mouse.
 
-<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/promo.gif" width="100%">
-
 ## Why this Plugin?
 
-Every time you want to edit your elements precisely you need to travel with your mouse to the panel inspector. So to avoid this repeat movement *sketch-pochette* bring the properties close to where your mouse is. 
-Thinking about Painting artists carry the brushes and colors in a pallet; as digital artists, we need our tools closly too.
+Every time you want to edit your elements precisely, you need to travel with your mouse to the panel inspector. So to avoid this repeated movement, *sketch-pochette* brings the properties close to where your mouse is. Thinking about how Painting artists carry their brushes and colors in a pallet; as digital artists, we need our tools closely too.
 
-Bonus point bumbags are cooler again.
+Bonus point bumbags are cool again.
 
 ## Install
+[![Install sketch-pochette with Sketchpacks](http://sketchpacks-com.s3.amazonaws.com/assets/badges/sketchpacks-badge-install.png "Install sketch-pochette with Sketchpacks")](https://sketchpacks.com/zehfernandes/sketch-pochette/install)
 
-  <a href="http://bit.ly/SketchRunnerWebsite">
-      <img height="40" width="160" src="http://bit.ly/RunnerBadgeBlue">
-    </a>
+<a href="http://bit.ly/SketchRunnerWebsite">
+  <img height="40" width="160" src="http://bit.ly/RunnerBadgeBlue">
+</a>
     
 1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/archive/master.zip)**.
 2. Double click on `sketchpochette.sketchplugin` to install. 
@@ -28,12 +28,15 @@ You can quickly access your pochette window by using the keyword shortcut <kbd>C
 | ----------------------------- | ----------------- |
 | <kbd>Cmd</kbd> + <kbd>`</kbd> | Open bumbag panel |
 
+<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/promo.gif" width="100%">
+
+
 ## Help wanted
 
 - Add a preference window to help you choose what proprieties you want to carry in your bumbag 
 - Add typography 
 - Add color picker
 - Resize options 
-- Aligments
+- Alignments
 
 What do you think? Contact me at [Twitter](https://twiter.com/zehf) our open an issue to contribute. 
