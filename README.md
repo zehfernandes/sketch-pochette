@@ -11,7 +11,7 @@ Bonus point bumbags are cool again.
 ## Install
 
     
-1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/releases/download/v0.5.0/sketchpochette.sketchplugin.zip)**.
+1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/releases/download/v0.6.0/sketchpochette.sketchplugin.zip)**.
 2. Double click on `sketchpochette.sketchplugin` to install. 
 
 ## Usage
