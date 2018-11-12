@@ -37,7 +37,7 @@ You can quickly access your pochette window by using the keyword shortcut <kbd>C
 
 What do you think? Contact me at [Twitter](https://twiter.com/zehf) our open an issue to contribute. 
 
-## or buy me a coffee ☕️
+## Or buy me a coffee ☕️
 
 Even a small donation from your side is important. This is really motivating me spend more time doing open source.<br/> [Buy me a coffee ✨](https://www.buymeacoffee.com/zehfernandes)
 
