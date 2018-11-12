@@ -1,0 +1,36 @@
+{
+  "name": "sketch-pochette",
+  "version": "0.1.0",
+  "engines": {
+    "sketch": ">=3.0"
+  },
+  "author": "Zeh Fernandes",
+  "homepage": "https://github.com/zehfernandes/sketch-pochette",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zehfernandes/sketch-pochette.git"
+  },
+  "skpm": {
+    "name": "sketch-pochette",
+    "manifest": "src/manifest.json",
+    "main": "sketchpochette.sketchplugin"
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "start": "skpm-build --watch --run",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.5.10",
+    "@skpm/extract-loader": "^2.0.2",
+    "css-loader": "^1.0.0",
+    "html-loader": "^0.5.1"
+  },
+  "resources": [
+    "resources/**/*.js"
+  ],
+  "dependencies": {
+    "sketch-module-web-view": "^2.0.0"
+  }
+}

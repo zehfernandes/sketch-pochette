@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="row">
+        <div class="field">
+          <input type="text" id="posx" /> <label>X</label>
+        </div>
+        <div class="field">
+          <input type="text" id="posy" /> <label>Y</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <input type="text" id="width" /><label>W</label>
+        </div>
+        <div class="field">
+          <input type="text" id="height" /><label>H</label>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      notice the "../" here. It's because webview.js will be compiled in a different folder
+    -->
+    <script src="../webview.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Open pochette",
+      "shortcut": "cmd `",
+      "script": "sketchpochette.js",
+      "handlers": {
+        "run": "default"
+      },
+      "identifier": "sketchpochette-identifier"
+    }
+  ],
+  "menu": {
+    "title": "Pochette",
+    "items": [
+      "sketchpochette-identifier"
+    ]
+  },
+  "version": "0.1.0",
+  "homepage": "https://github.com/zehfernandes/sketch-pochette",
+  "name": "sketch-pochette",
+  "identifier": "sketch-pochette",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com/zehfernandes/sketch-pochette/master/.appcast.xml",
+  "author": "Zeh Fernandes"
+}

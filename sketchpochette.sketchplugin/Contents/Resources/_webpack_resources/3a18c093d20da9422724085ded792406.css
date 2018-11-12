@@ -1,0 +1,52 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: "Helvetica", "Arial", sans-serifnote-item;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+}
+
+.field {
+  position: relative;
+  display: inline-block;
+  width: 46%;
+}
+
+.field:first-child {
+  margin-right: 4%;
+}
+
+input {
+  width: 100%;
+  font-size: 12px;
+  height: 25px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+label {
+  font-size: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  opacity: 0.8;
+}
+
+.row {
+  margin-bottom: 5px;
+  width: 100%;
+}

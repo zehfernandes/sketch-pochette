@@ -1,0 +1,19 @@
+{
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Open pochette",
+      "shortcut": "cmd `",
+      "script": "./sketchpochette.js",
+      "handlers": {
+        "run": "default"
+      },
+      "identifier": "sketchpochette-identifier"
+    }
+  ],
+  "menu": {
+    "title": "Pochette",
+    "items": ["sketchpochette-identifier"]
+  }
+}
