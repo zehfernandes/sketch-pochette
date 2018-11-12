@@ -19,7 +19,7 @@
       "sketchpochette-identifier"
     ]
   },
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "A Sketch plugin that lets you carry your most used properties close to your mouse",
   "homepage": "https://github.com/zehfernandes/sketch-pochette",
   "name": "sketch-pochette",
