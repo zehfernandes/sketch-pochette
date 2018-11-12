@@ -1,5 +1,6 @@
 import BrowserWindow from "sketch-module-web-view";
 import UI from "sketch/ui";
+import math from "mathjs";
 
 //======================
 // Helpers
@@ -105,7 +106,12 @@ export default function(context) {
 
   //Handlers
   webContents.on("updateElements", (attribute, num) => {
-    if (typeof parseInt(num) != "number") {
+    let result = 0;
+
+    try {
+      result = math.eval(num);
+    } catch (error) {
+      this.loadProperties();
       return;
     }
 
@@ -113,11 +119,17 @@ export default function(context) {
 
     for (var i = 0; i < selection.count(); i++) {
       const layer = selection.objectAtIndex(i);
-      updateAttribute(layer, num);
+      updateAttribute(layer, result);
     }
+
+    this.loadProperties();
   });
 
   webContents.on("loadSelectElements", s => {
+    this.loadProperties();
+  });
+
+  this.loadProperties = () => {
     const object = [];
     for (var i = 0; i < selection.count(); i++) {
       const layer = selection.objectAtIndex(i);
@@ -125,7 +137,7 @@ export default function(context) {
     }
 
     webContents.executeJavaScript("writeNotes(" + JSON.stringify(object) + ")");
-  });
+  };
 
   browserWindow.loadURL(require("../resources/webview.html"));
 }
