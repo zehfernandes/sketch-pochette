@@ -1,6 +1,6 @@
 # sketch-pochette
 
-<img src="https://github.com/zehfernades/sketch-pochette/blob/master/doc/promo.gif" width="100%">
+<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/promo.gif" width="100%">
 
 A Sketch plugin that lets you carry your most used properties close to your mouse.
 
@@ -27,8 +27,6 @@ You can quickly access your pochette window by using the keyword shortcut <kbd>C
 | Shortcut                      | Function          |
 | ----------------------------- | ----------------- |
 | <kbd>Cmd</kbd> + <kbd>`</kbd> | Open bumbag panel |
-
-(image using)
 
 ## Help wanted
 
