@@ -1,8 +1,6 @@
 <img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/title.png" width="100%">
 
-# sketch-pochette
-
-A Sketch plugin that lets you carry your most used properties close to your mouse.
+# Sketch Pochette
 
 ## Why this Plugin?
 
@@ -13,7 +11,7 @@ Bonus point bumbags are cool again.
 ## Install
 
     
-1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/releases/download/v0.4.0/sketchpochette.sketchplugin.zip)**.
+1. Download and open **[sketch-pochette-master.zip](https://github.com/zehfernandes/sketch-pochette/releases/download/v0.5.0/sketchpochette.sketchplugin.zip)**.
 2. Double click on `sketchpochette.sketchplugin` to install. 
 
 ## Usage
