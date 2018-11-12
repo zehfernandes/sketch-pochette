@@ -14,7 +14,10 @@
   "skpm": {
     "name": "sketch-pochette",
     "manifest": "src/manifest.json",
-    "main": "sketchpochette.sketchplugin"
+    "main": "sketchpochette.sketchplugin",
+    "assets": [
+      "resources/icon.png"
+    ]
   },
   "scripts": {
     "build": "skpm-build",
@@ -32,6 +35,7 @@
     "resources/**/*.js"
   ],
   "dependencies": {
+    "mathjs": "^5.2.3",
     "sketch-module-web-view": "^2.0.0"
   }
 }
