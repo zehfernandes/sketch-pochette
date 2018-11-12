@@ -1,8 +1,8 @@
 # sketch-pochette
 
-<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/promo.gif" width="100%">
-
 A Sketch plugin that lets you carry your most used properties close to your mouse.
+
+<img src="https://github.com/zehfernandes/sketch-pochette/blob/master/docs/promo.gif" width="100%">
 
 ## Why this Plugin?
 
