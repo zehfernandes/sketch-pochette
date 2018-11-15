@@ -33,7 +33,7 @@ You can quickly access your pochette window by using the keyword shortcut <kbd>C
 - Resize options 
 - Alignments
 
-What do you think? Contact me at [Twitter](https://twiter.com/zehf) our open an issue to contribute. 
+What do you think? Contact me at [Twitter](https://twitter.com/zehf) our open an issue to contribute. 
 
 ## Or buy me a coffee ☕️
 
