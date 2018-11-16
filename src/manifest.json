@@ -7,19 +7,11 @@
       "name": "Open pochette",
       "shortcut": "cmd `",
       "script": "./sketchpochette.js",
-      "handlers": {
-        "run": "default"
-      },
       "identifier": "sketchpochette-identifier"
     }
   ],
   "menu": {
     "title": "Pochette",
     "items": ["sketchpochette-identifier"]
-  },
-  "description": "A Sketch plugin that lets you carry your most used properties close to your mouse.",
-  "homepage": "https://github.com/zehfernandes/sketch-pochette",
-  "appcast": "https://raw.githubusercontent.com/zehfernandes/sketch-pochette/master/.appcast.xml",
-  "author": "Zeh Fernandes",
-  "authorEmail": "ozehfernandes@gmail.com"
+  }
 }

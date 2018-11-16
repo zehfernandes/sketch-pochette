@@ -1,8 +1,5 @@
 # build artefacts
-plugin.sketchplugin/Contents/Sketch
-plugin.sketchplugin/Contents/Resources/_webpack_resources
-plugin.sketchplugin/Contents/Resources/webview.js
-plugin.sketchplugin/Contents/Resources/webview.js.map
+sketchpochette.sketchplugin
 
 # npm
 node_modules
@@ -11,3 +8,5 @@ npm-debug.log
 
 # mac
 .DS_Store
+
+.vscode/settings.json

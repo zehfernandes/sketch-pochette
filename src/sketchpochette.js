@@ -1,143 +1,96 @@
-import BrowserWindow from "sketch-module-web-view";
-import UI from "sketch/ui";
-import math from "mathjs";
+/* global NSEvent, NSHeight, NSScreen */
 
-//======================
+import BrowserWindow from 'sketch-module-web-view'
+import sketch from 'sketch'
+import math from 'mathjs'
+
+// ======================
 // Helpers
-//======================
-function mouseInCanvasViewForDocument(document) {
-  var mouseInWindow = document
-    .documentWindow()
-    .convertScreenToBase(NSEvent.mouseLocation());
-  return document.contentDrawView().convertPoint_fromView(mouseInWindow, null);
-}
-
-function CGPointToObject(point) {
+// ======================
+function mousePosition() {
+  const mainScreenRect = NSScreen.screens()
+    .firstObject()
+    .frame()
+  const point = NSEvent.mouseLocation()
   return {
-    x: point.x.doubleValue() + 75,
-    y: point.y.doubleValue()
-  };
+    x: point.x.doubleValue(),
+    // the mouse coordinate starts from the bottom instead of the top
+    y: NSHeight(mainScreenRect) - point.y.doubleValue(),
+  }
 }
 
-function getElementAttributes(layer) {
-  return {
-    x: layer.absoluteRect().rulerX(),
-    y: layer.absoluteRect().rulerY(),
-    width: layer.frame().width(),
-    height: layer.frame().height()
-  };
+function loadAndSendProperties(selection, webContents) {
+  const frames = selection.map(layer => layer.frame.toJSON())
+  webContents.executeJavaScript(`writeNotes(${JSON.stringify(frames)})`)
 }
 
-//======================
-// Updates
-//======================
-const updateMethodList = {
-  x: updateAttributeX,
-  y: updateAttributeY,
-  height: updateAttributeHeight,
-  width: updateAttributeWidth
-};
-
-function updateAttributeHeight(layer, num) {
-  layer.frame().setHeight(num);
-}
-
-function updateAttributeWidth(layer, num) {
-  layer.frame().setWidth(num);
-}
-
-function updateAttributeY(layer, num) {
-  layer.absoluteRect().setRulerY(num);
-}
-
-function updateAttributeX(layer, num) {
-  layer.absoluteRect().setRulerX(num);
-}
-
-//======================
+// ======================
 // Main
-//======================
-export default function(context) {
-  if (!context.selection) {
-    return;
+// ======================
+export default function() {
+  const document = sketch.getSelectedDocument()
+  if (!document) {
+    return
   }
 
-  const selection = context.selection;
+  const selection = document.selectedLayers
 
   // Error: Select element!
   if (selection.length <= 0) {
-    UI.message("You need select a element");
-    return;
+    sketch.UI.message('You need select a element')
+    return
   }
 
-  const point = CGPointToObject(mouseInCanvasViewForDocument(context.document));
+  const point = mousePosition()
   const options = {
-    identifier: "unique.id",
-    x: point.x,
+    identifier: 'sketch-pochette.frames',
+    x: point.x + 30,
     y: point.y,
     width: 170,
-    height: 110,
+    height: 80,
     show: false,
     alwaysOnTop: true,
-    maximizable: false,
-    title: " ",
-    minimizable: false,
-    vibrancy: "popover",
+    title: ' ',
+    vibrancy: 'popover',
     hasShadow: true,
-    resizable: false
-    //frame: false
-  };
+    resizable: false,
+    frame: false,
+  }
 
-  let browserWindow = new BrowserWindow(options);
-  const webContents = browserWindow.webContents;
+  let browserWindow = new BrowserWindow(options)
+  browserWindow.loadURL(require('../resources/webview.html'))
 
-  browserWindow.once("ready-to-show", () => {
-    browserWindow.show();
-  });
+  const { webContents } = browserWindow
 
-  browserWindow.on("blur", () => {
-    webContents.executeJavaScript("unload()");
-    browserWindow.close();
-  });
+  browserWindow.once('ready-to-show', () => {
+    browserWindow.show()
+  })
 
-  browserWindow.on("closed", () => {
-    browserWindow = null;
-  });
+  browserWindow.on('blur', () => {
+    webContents.executeJavaScript('unload()')
+    browserWindow.close()
+  })
 
-  //Handlers
-  webContents.on("updateElements", (attribute, num) => {
-    let result = 0;
+  browserWindow.on('closed', () => {
+    browserWindow = null
+  })
 
+  // Handlers
+  webContents.on('updateElements', (attribute, num) => {
     try {
-      result = math.eval(num);
+      const result = math.eval(num)
+      selection.forEach(layer => {
+        // eslint-disable-next-line
+        layer.frame[attribute] = result
+      })
     } catch (error) {
-      this.loadProperties();
-      return;
+      console.error(error)
     }
 
-    const updateAttribute = updateMethodList[attribute];
+    loadAndSendProperties(selection, webContents)
+  })
 
-    for (var i = 0; i < selection.count(); i++) {
-      const layer = selection.objectAtIndex(i);
-      updateAttribute(layer, result);
-    }
-
-    this.loadProperties();
-  });
-
-  webContents.on("loadSelectElements", s => {
-    this.loadProperties();
-  });
-
-  this.loadProperties = () => {
-    const object = [];
-    for (var i = 0; i < selection.count(); i++) {
-      const layer = selection.objectAtIndex(i);
-      object.push(getElementAttributes(layer));
-    }
-
-    webContents.executeJavaScript("writeNotes(" + JSON.stringify(object) + ")");
-  };
-
-  browserWindow.loadURL(require("../resources/webview.html"));
+  webContents.on('loadSelectElements', () => {
+    loadAndSendProperties(selection, webContents)
+  })
 }
