@@ -7,7 +7,7 @@ import math from 'mathjs'
 // ======================
 // Helpers
 // ======================
-function mousePosition() {
+function getMousePosition() {
   const mainScreenRect = NSScreen.screens()
     .firstObject()
     .frame()
@@ -41,7 +41,7 @@ export default function() {
     return
   }
 
-  const point = mousePosition()
+  const point = getMousePosition()
   const options = {
     identifier: 'sketch-pochette.frames',
     x: point.x + 30,
