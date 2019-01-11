@@ -1,12 +1,12 @@
 /* global NSEvent, NSHeight, NSScreen */
 
 import BrowserWindow from 'sketch-module-web-view'
-import sketch from 'sketch'
+import UI from 'sketch/ui'
 import math from 'mathjs'
 
-// ======================
+//= =====================
 // Helpers
-// ======================
+//= =====================
 function getMousePosition() {
   const mainScreenRect = NSScreen.screens()
     .firstObject()
@@ -19,48 +19,77 @@ function getMousePosition() {
   }
 }
 
-function loadAndSendProperties(selection, webContents) {
-  const frames = selection.map(layer => layer.frame.toJSON())
-  webContents.executeJavaScript(`writeNotes(${JSON.stringify(frames)})`)
+function getElementAttributes(layer) {
+  return {
+    x: layer.absoluteRect().rulerX(),
+    y: layer.absoluteRect().rulerY(),
+    width: layer.frame().width(),
+    height: layer.frame().height(),
+  }
 }
 
-// ======================
+//= =====================
+// Updates
+//= =====================
+const updateMethodList = {
+  x: updateAttributeX,
+  y: updateAttributeY,
+  height: updateAttributeHeight,
+  width: updateAttributeWidth,
+}
+
+function updateAttributeHeight(layer, num) {
+  layer.frame().setHeight(num)
+}
+
+function updateAttributeWidth(layer, num) {
+  layer.frame().setWidth(num)
+}
+
+function updateAttributeY(layer, num) {
+  layer.absoluteRect().setRulerY(num)
+}
+
+function updateAttributeX(layer, num) {
+  layer.absoluteRect().setRulerX(num)
+}
+
+//= =====================
 // Main
-// ======================
-export default function() {
-  const document = sketch.getSelectedDocument()
-  if (!document) {
+//= =====================
+export default function(context) {
+  if (!context.selection) {
     return
   }
 
-  const selection = document.selectedLayers
+  const selection = context.selection
 
   // Error: Select element!
   if (selection.length <= 0) {
-    sketch.UI.message('You need select a element')
+    UI.message('You need select a element')
     return
   }
 
   const point = getMousePosition()
   const options = {
     identifier: 'sketch-pochette.frames',
-    x: point.x + 30,
+    x: point.x,
     y: point.y,
     width: 170,
-    height: 80,
+    height: 100,
     show: false,
     alwaysOnTop: true,
+    maximizable: false,
     title: ' ',
+    minimizable: false,
     vibrancy: 'popover',
     hasShadow: true,
     resizable: false,
-    frame: false,
+    // frame: false
   }
 
   let browserWindow = new BrowserWindow(options)
-  browserWindow.loadURL(require('../resources/webview.html'))
-
-  const { webContents } = browserWindow
+  const webContents = browserWindow.webContents
 
   browserWindow.once('ready-to-show', () => {
     browserWindow.show()
@@ -77,20 +106,38 @@ export default function() {
 
   // Handlers
   webContents.on('updateElements', (attribute, num) => {
+    let result = 0
+
     try {
-      const result = math.eval(num)
-      selection.forEach(layer => {
-        // eslint-disable-next-line
-        layer.frame[attribute] = result
-      })
+      result = math.eval(num)
     } catch (error) {
-      console.error(error)
+      this.loadProperties()
+      return
     }
 
-    loadAndSendProperties(selection, webContents)
+    const updateAttribute = updateMethodList[attribute]
+
+    for (let i = 0; i < selection.count(); i++) {
+      const layer = selection.objectAtIndex(i)
+      updateAttribute(layer, result)
+    }
+
+    this.loadProperties()
   })
 
-  webContents.on('loadSelectElements', () => {
-    loadAndSendProperties(selection, webContents)
+  webContents.on('loadSelectElements', s => {
+    this.loadProperties()
   })
+
+  this.loadProperties = () => {
+    const object = []
+    for (let i = 0; i < selection.count(); i++) {
+      const layer = selection.objectAtIndex(i)
+      object.push(getElementAttributes(layer))
+    }
+
+    webContents.executeJavaScript(`writeNotes(${JSON.stringify(object)})`)
+  }
+
+  browserWindow.loadURL(require('../resources/webview.html'))
 }
