@@ -6,7 +6,7 @@
 
 body {
   background-color: #f2f2f2;
-  font-family: "Helvetica", "Arial", sans-serifnote-item;
+  font-family: 'Helvetica', 'Arial', sans-serifnote-item;
 }
 
 .main {
@@ -31,8 +31,13 @@ input {
   height: 25px;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[value='Multiple'] {
+  color: '#ccc';
+  font-style: 'italic';
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
