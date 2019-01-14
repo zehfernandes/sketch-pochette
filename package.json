@@ -1,7 +1,7 @@
 {
   "name": "sketch-pochette",
   "description": "A Sketch plugin that lets you carry your most used properties close to your mouse.",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "engines": {
     "sketch": ">=3.0"
   },
